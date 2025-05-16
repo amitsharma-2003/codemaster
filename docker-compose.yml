@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    environment:
+      - DB=mongodb+srv://amit:codemaster@codemaster.0wlvmzf.mongodb.net/?retryWrites=true&w=majority&appName=codemaster
+    restart: always
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    restart: always
+
